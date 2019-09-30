@@ -35,4 +35,3 @@ def readData(fileName):
             predictionData.append(predictionValue)
             
     return observationData, predictionData, size
-    

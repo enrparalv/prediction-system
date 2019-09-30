@@ -36,4 +36,3 @@ def ECMProduction(observations, predictions, size):
 	error = 100*size/sumObservation * sqrtSumSize
 
 	return error 
-	
