@@ -5,6 +5,10 @@
 # APELLIDOS: PARDO ÁLVAREZ
 # NOMBRE: ENRIQUE
 # --------------------------------------------------------------------------
+import sys
+sys.path.append('..')
+
+from operator import itemgetter
 
 def readData(fileName):
     size = 0
@@ -15,6 +19,7 @@ def readData(fileName):
     for line in open(fileName):
         production=0
         wind=0
+        month=0
         
         if line == "predicciones\n":
         	data += 1
@@ -24,14 +29,23 @@ def readData(fileName):
             
             if len(spLine) == 4:
                 production = int(spLine[2])
-                wind = spLine[3].rstrip()
+                wind = int(spLine[3].rstrip())
+                month = spLine[0].split("-")[2]
 
-            observationValue = [production, wind] 
+            observationValue = [production, wind, month] 
             observationData.append(observationValue)
             size+=1
 
         else:
-            predictionValue = line.split(" ")[2].rstrip() 
-            predictionData.append(predictionValue)
-            
+            spLine2 = line.split(" ")
+            predictionValue = int(spLine2[2].rstrip()) 
+            date = ' '.join([spLine2[0],spLine2[1]])
+            print("Date:   ",date)
+            predValDate = [predictionValue,date]
+            print("predValDate:   ",predValDate)
+            predictionData.append(predValDate)
+
+    predictionData.sort(key=itemgetter(1))        
+    print("prediction data:   ",predictionData)
+    
     return observationData, predictionData, size
