@@ -8,31 +8,47 @@
 
 import math
 
-def EMAProduction(observations, predictions, size):
-	error = 0
-	sumDif = 0
+def EMAProduction(observation, bu, bc, size):	
+    error = 0
+    sumDif = 0
+    
+    for prod,wind in observation:
+        
+        p = bc+bu*wind
+        
+        if p < 0:
+            p = 0
+        
+        elif p > 1008:
+            p = 1008
+            
+        AbsDif = abs(prod-p)
+        sumDif = sumDif+AbsDif 
 
-	for O,P in zip(observations,predictions):
+    sumObservation = sum(observation[:,0])    
+    error = (sumDif/sumObservation) * 100
 
-		sumAbsDif = abs(O-P)
-		sumDif = sumDif+sumAbsDif 
-	
-	sumObservation = sum(observations)
-	error = 100/sumObservation * sumDif 
+    return error
 
-	return error
+def ECMProduction(observation, bu, bc, size):
+    error = 0
+    sumDif = 0
+    
+    for prod,wind in observation:
+    
+        p = bc+bu*wind
+        
+        if p < 0:
+            p = 0
+            
+        elif p > 1008:
+            p = 1008
+            
+        squareDif = (prod-p)**2
+        sumDif = sumDif+squareDif
 
-def ECMProduction(observations, predictions, size):
-	error = 0
-	sumDif = 0
-
-	for O,P in zip(observations,predictions):
-
-		squareDif = (O-P)**2
-		sumDif = sumDif+squareDif
-
-	sumObservation = sum(observations)
-	sqrtSumSize = math.sqrt(sumDif/size)
-	error = 100*size/sumObservation * sqrtSumSize
-
-	return error 
+    sumObservation = sum(observation[:,0])
+    sqrtSumSize = math.sqrt(sumDif/size)
+    error = ((size*sqrtSumSize)/sumObservation) * 100
+    
+    return error 
