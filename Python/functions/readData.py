@@ -30,7 +30,7 @@ def readData(fileName):
             if len(spLine) == 4:
                 production = int(spLine[2])
                 wind = int(spLine[3].rstrip())
-                month = spLine[0].split("-")[2]
+                month = spLine[0].split("-")[1]
 
             observationValue = [production, wind, month] 
             observationData.append(observationValue)
@@ -40,12 +40,9 @@ def readData(fileName):
             spLine2 = line.split(" ")
             predictionValue = int(spLine2[2].rstrip()) 
             date = ' '.join([spLine2[0],spLine2[1]])
-            print("Date:   ",date)
             predValDate = [predictionValue,date]
-            print("predValDate:   ",predValDate)
             predictionData.append(predValDate)
 
     predictionData.sort(key=itemgetter(1))        
-    print("prediction data:   ",predictionData)
     
     return observationData, predictionData, size
