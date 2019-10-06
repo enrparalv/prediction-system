@@ -1,0 +1,5 @@
+FROM python:3
+
+ADD Python/predictionSystem.py / Python/functions/readData.py /Python/functions/errorFunctions.py / Python/test/test.py / Python/test/Meteologica_vacante_ProgC_ProblemaDatos_20190903.txt
+
+CMD [ "python", "./Python/test/test.py" ]

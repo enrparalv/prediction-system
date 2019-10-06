@@ -14,7 +14,8 @@ def EMAProduction(observation, bu, bc, size):
     
     for prod,wind in observation:
         
-        p = bc+bu*wind
+        p = int(bc+bu*wind)
+        
         
         if p < 0:
             p = 0
@@ -28,7 +29,7 @@ def EMAProduction(observation, bu, bc, size):
     sumObservation = sum(observation[:,0])    
     error = (sumDif/sumObservation) * 100
 
-    return error
+    return round(error, 2)
 
 def ECMProduction(observation, bu, bc, size):
     error = 0
@@ -36,7 +37,7 @@ def ECMProduction(observation, bu, bc, size):
     
     for prod,wind in observation:
     
-        p = bc+bu*wind
+        p = int(bc+bu*wind)
         
         if p < 0:
             p = 0
@@ -51,4 +52,4 @@ def ECMProduction(observation, bu, bc, size):
     sqrtSumSize = math.sqrt(sumDif/size)
     error = ((size*sqrtSumSize)/sumObservation) * 100
     
-    return error 
+    return round(error, 2)
