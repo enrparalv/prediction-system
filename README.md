@@ -22,7 +22,7 @@ Se ha considerado también que cuando el sistema obtenga como resultado del cál
 Se ha incluido un fichero Dockerfile que contiene lo necesario para la ejecución del sistema. La instrucción para crear la imagen sería la siguiente
 
 ```
-docker build -t "predictionSystem-Dockerfile"
+docker build -t "predictionSystem-Dockerfile" .
 ```
 
 ## Ejecución del ejemplo
