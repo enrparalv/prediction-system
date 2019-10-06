@@ -22,14 +22,14 @@ Se ha considerado también que cuando el sistema obtenga como resultado del cál
 Se ha incluido un fichero Dockerfile que contiene lo necesario para la ejecución del sistema. La instrucción para crear la imagen sería la siguiente
 
 ```
-docker build -t "predictionSystem-Dockerfile"
+docker build -t "predictionsystem" .
 ```
 
 ## Ejecución del ejemplo
 Para la ejecución del ejemplo basta con ejecutar la siguiente línea
 
 ```
-docker run predictionSystem-Dockerfile
+docker run predictionsystem python test.py
 ```
 
 Ésta imagen ejecuta el código del fichero test.py, donde se lee los datos de un fichero de texto y se calcula la recta de regresión. 
