@@ -5,8 +5,6 @@
 # APELLIDOS: PARDO ALVAREZ
 # NOMBRE: ENRIQUE
 # --------------------------------------------------------------------------
-#import sys
-#sys.path.append('..')
 
 from operator import itemgetter
 

@@ -29,7 +29,7 @@ docker build -t "predictionsystem" .
 Para la ejecución del ejemplo basta con ejecutar la siguiente línea
 
 ```
-docker run predictionsystem python test.py
+docker run predictionsystem
 ```
 
 Ésta imagen ejecuta el código del fichero test.py, donde se lee los datos de un fichero de texto y se calcula la recta de regresión. 
