@@ -1,7 +1,7 @@
 FROM python:3
 
-ADD src/ /
-ADD data/ /
+ADD src /src
+ADD data /data
 
 RUN pip3 install numpy
 
